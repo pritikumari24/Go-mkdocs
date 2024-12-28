@@ -1,0 +1,1004 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the Go-based Git-like version control system">
+      
+      
+      
+        <link rel="canonical" href="https://your-site-url.com/">
+      
+      
+      
+        <link rel="next" href="setup/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Git-like Version Control System</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/custom.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#indexmd" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Git-like Version Control System" class="md-header__button md-logo" aria-label="Git-like Version Control System" data-md-component="logo">
+      
+  <img src="images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Git-like Version Control System
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Git-like Version Control System" class="md-nav__button md-logo" aria-label="Git-like Version Control System" data-md-component="logo">
+      
+  <img src="images/logo.png" alt="logo">
+
+    </a>
+    Git-like Version Control System
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indexmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      index.md
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-like-version-control-system-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git-like Version Control System Documentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Git-like Version Control System Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="object_structure.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object Structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="trees.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tree Objects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blobs.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="commits.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Commits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Commands
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="add/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Add
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cat_file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cat File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="checkout/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checkout
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="commit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Commit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hash_object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hash Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="init/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Init
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ls_tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LS Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="status/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Status
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Advanced
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="trees.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tree Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indexmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      index.md
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-like-version-control-system-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git-like Version Control System Documentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Git-like Version Control System Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h2 id="indexmd"><code>index.md</code><a class="headerlink" href="#indexmd" title="Permanent link">&para;</a></h2>
+<h1 id="git-like-version-control-system-documentation">Git-like Version Control System Documentation<a class="headerlink" href="#git-like-version-control-system-documentation" title="Permanent link">&para;</a></h1>
+<p>Welcome to the documentation for the <strong>Git-like Version Control System</strong> built in Go! This system emulates the core functionalities of Git, allowing you to manage file changes, create commits, track history, and perform various version control tasks. Below is a comprehensive guide to all the available features, objects, and commands in this system, with links to detailed explanations for each component.</p>
+<h3 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong><a href="setup/">Setup</a></strong></li>
+<li><strong>Purpose</strong>: Instructions on how to set up and install the Git-like version control system on your local machine.</li>
+<li>
+<p><strong>What You’ll Learn</strong>: Prerequisites, installation steps, and how to initialize a new repository.</p>
+</li>
+<li>
+<p><strong><a href="object_structure.md">Object Structure</a></strong></p>
+</li>
+<li><strong>Purpose</strong>: Provides an overview of the fundamental objects (blobs, trees, commits, and tags) used in this system.</li>
+<li>
+<p><strong>What You’ll Learn</strong>: How objects are stored, referenced, and their structure within the system.</p>
+</li>
+<li>
+<p><strong><a href="trees.md">Tree Objects</a></strong></p>
+</li>
+<li><strong>Purpose</strong>: Explains the role of tree objects in organizing the directory structure.</li>
+<li>
+<p><strong>What You’ll Learn</strong>: How tree objects represent directories and link to files (blobs) and other subdirectories (trees).</p>
+</li>
+<li>
+<p><strong><a href="blobs.md">Blobs</a></strong></p>
+</li>
+<li><strong>Purpose</strong>: Describes blob objects, which store the contents of files.</li>
+<li>
+<p><strong>What You’ll Learn</strong>: How blobs are created from file contents and how they are hashed and stored.</p>
+</li>
+<li>
+<p><strong><a href="commits.md">Commits</a></strong></p>
+</li>
+<li><strong>Purpose</strong>: Detailed explanation of commit objects and their role in storing history and metadata about changes.</li>
+<li>
+<p><strong>What You’ll Learn</strong>: How commit objects link to tree objects and contain metadata like timestamps and author information.</p>
+</li>
+<li>
+<p><strong><a href="add/">Add</a></strong></p>
+</li>
+<li><strong>Purpose</strong>: Explains the <code>add</code> command used to stage changes for committing.</li>
+<li>
+<p><strong>What You’ll Learn</strong>: How to add files and directories to the staging area before committing them to the repository.</p>
+</li>
+<li>
+<p><strong><a href="cat_file/">Cat File</a></strong></p>
+</li>
+<li><strong>Purpose</strong>: Details the <code>cat_file</code> command that allows you to view the contents of any object (blobs, trees, commits).</li>
+<li>
+<p><strong>What You’ll Learn</strong>: How to access and view the raw content of stored objects in the repository using their hashes.</p>
+</li>
+<li>
+<p><strong><a href="checkout/">Checkout</a></strong></p>
+</li>
+<li><strong>Purpose</strong>: Describes how to use the <code>checkout</code> command to switch between commits or versions of files.</li>
+<li>
+<p><strong>What You’ll Learn</strong>: How to navigate between different commit histories and restore specific files or directories.</p>
+</li>
+<li>
+<p><strong><a href="commit/">Commit</a></strong></p>
+</li>
+<li><strong>Purpose</strong>: Explains the process of creating a new commit and the structure of commit objects.</li>
+<li>
+<p><strong>What You’ll Learn</strong>: How to save changes, link them to a commit history, and store commit metadata (author, date, commit message).</p>
+</li>
+<li>
+<p><strong><a href="hash_object/">Hash Object</a></strong></p>
+<ul>
+<li><strong>Purpose</strong>: Describes the <code>hash_object</code> command that computes and returns the hash of an object.</li>
+<li><strong>What You’ll Learn</strong>: How objects are hashed to ensure uniqueness and how this process is integral to version control.</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="init/">Init</a></strong></p>
+<ul>
+<li><strong>Purpose</strong>: Explains the <code>init</code> command that initializes a new repository.</li>
+<li><strong>What You’ll Learn</strong>: How to set up a new version control repository, including the creation of necessary configuration files and directories.</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="log/">Log</a></strong></p>
+<ul>
+<li><strong>Purpose</strong>: Details how to view the commit history of the repository using the <code>log</code> command.</li>
+<li><strong>What You’ll Learn</strong>: How to navigate through commit logs, view past changes, and analyze project history.</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="ls_tree/">LS Tree</a></strong></p>
+<ul>
+<li><strong>Purpose</strong>: Describes the <code>ls_tree</code> command that lists the contents of a tree object.</li>
+<li><strong>What You’ll Learn</strong>: How to display the contents of directories (tree objects) at specific points in history.</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="status/">Status</a></strong></p>
+<ul>
+<li><strong>Purpose</strong>: Explains the <code>status</code> command, which shows the current state of the repository, including staged and unstaged changes.</li>
+<li><strong>What You’ll Learn</strong>: How to check for modified, deleted, or new files and understand their status in relation to the repository.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong><a href="setup/">Setup</a></strong>: Before you begin using the system, ensure you have completed the installation process outlined in the Setup guide. This section provides all the prerequisites, such as the Go runtime and setting up a Git-like repository.</p>
+</li>
+<li>
+<p>Once you have your repository initialized, you can explore key functionality, such as:</p>
+</li>
+<li><strong><a href="add/">Adding Files</a></strong>: Stage files for commit.</li>
+<li><strong><a href="commit/">Committing Changes</a></strong>: Save your changes to the repository with commit history.</li>
+<li><strong><a href="status/">Viewing Status</a></strong>: Track changes in your working directory and staging area.</li>
+</ol>
+<hr />
+<h3 id="core-features">Core Features<a class="headerlink" href="#core-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Version Control</strong>: Track changes made to files and directories over time, supporting operations like commit, revert, and branch management.</li>
+<li><strong>Object Management</strong>: Learn how different objects (blobs, trees, commits) interact with each other to represent files, directories, and changes.</li>
+<li><strong>Commit History</strong>: View your project’s commit history and understand how past changes relate to the current state of the repository.</li>
+<li><strong>File Operations</strong>: Add files to the staging area, check out different versions, and commit changes to track project evolution.</li>
+</ul>
+<h3 id="advanced-features">Advanced Features<a class="headerlink" href="#advanced-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Log and History Tracking</strong>: The <strong><a href="log/">Log</a></strong> command helps you analyze and explore the commit history.</li>
+<li><strong>Tree Management</strong>: Explore and manage directory structures using tree objects, which are explained in the <strong><a href="trees.md">Tree Objects</a></strong> and <strong><a href="ls_tree/">LS Tree</a></strong> documents.</li>
+</ul>
+<hr />
+<p>This <strong>index.md</strong> serves as a central hub to navigate the documentation for your Git-like version control system project. By following the links, you can gain in-depth insights into each command, object type, and how they function within the system. Whether you're adding files, committing changes, or managing the object structure, this documentation will help guide you through every step.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="js/custom.js"></script>
+      
+    
+  </body>
+</html>

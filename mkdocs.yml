@@ -1,0 +1,42 @@
+site_name: Git-like Version Control System
+site_url: https://your-site-url.com
+site_description: Documentation for the Go-based Git-like version control system
+
+nav:
+  - Home: index.md
+  - Setup: setup.md
+  - Object Structure: object_structure.md
+  - Tree Objects: trees.md
+  - Blobs: blobs.md
+  - Commits: commits.md
+  - Commands:
+      - Add: add.md
+      - Cat File: cat_file.md
+      - Checkout: checkout.md
+      - Commit: commit.md
+      - Hash Object: hash_object.md
+      - Init: init.md
+      - Log: log.md
+      - LS Tree: ls_tree.md
+      - Status: status.md
+  - Advanced:
+      - Log and History Tracking: log.md
+      - Tree Management: trees.md
+
+theme:
+  name: material
+  logo: images/logo.png  # Optional: If you want to include a logo.
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - footnotes
+  - admonition
+
+plugins:
+  - search  # Only include the search plugin.
+
+extra_css:
+  - 'css/custom.css'  # Optional: If you have custom CSS.
+extra_javascript:
+  - 'js/custom.js'  # Optional: If you have custom JS.
